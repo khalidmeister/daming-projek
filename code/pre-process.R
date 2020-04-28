@@ -4,9 +4,9 @@ library(ggplot2)
 library(gganimate)
 
 # Importing data
-data_confirmed <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/Project/data/time_series_covid19_confirmed_global.csv")
-data_deaths <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/Project/data/time_series_covid19_deaths_global.csv")
-data_recovered <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/Project/data/time_series_covid19_recovered_global.csv")
+data_confirmed <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/daming-projek/data/time_series_covid19_confirmed_global.csv")
+data_deaths <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/daming-projek/data/time_series_covid19_deaths_global.csv")
+data_recovered <- read.csv("D:/_Kuliah/3_Junior/KOM332 Daming/daming-projek/data/time_series_covid19_recovered_global.csv")
 
 # Remove Province
 colnames(data_confirmed)
@@ -42,17 +42,14 @@ table_creator <- function(country){
   table_deaths <- data_deaths_pivot[data_deaths_pivot$Country.Region == country, 5]
   table_recovered <- data_recovered_pivot[data_recovered_pivot$Country.Region == country, 5]
  
-  # date = as.Date("2020-01-22") + 0:81 
-  day = 1:82
+  date = as.Date("2020-01-22") + 0:81 
+  # day = 1:82
   
-  table_fix <- cbind(day, table_confirmed, table_deaths, table_recovered)
+  table_fix <- cbind(date, table_confirmed, table_deaths, table_recovered)
   table_fix <- table_fix[, -5]
-  head(table_fix)
+  View(table_fix)
   return(as_tibble(table_fix))
 }
-
-day = 1:82
-day
 
 # Mengambil negara terkait, akan diambil Indonesia, Korsel, Singapura, Italia, Cina, dan AS  
 indonesia <- table_creator("Indonesia")
@@ -78,13 +75,11 @@ ggplot(combine, aes(x=Country.Region, y=confirmed, color = Country.Region)) +
 
 
 ggplot(italy, aes(x=day, y=confirmed)) +
-  geom_line() +
-  ggtitle('Italy') +
-  transition_time(day) +
-  ease_aes('linear')
+  geom_line(color='dark green', size=1.5) +
+  ggtitle('Italy')
 
 ggplot(s_korea, aes(x=day, y=confirmed)) +
-  geom_line(color='orange', size = 1.5) +
+  geom_line(color='light blue', size = 1.5) +
   ggtitle('South Korea')
 
 ggplot(taiwan, aes(x=day, y=confirmed)) +
