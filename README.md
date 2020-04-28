@@ -1,4 +1,6 @@
 # Data Mining Project
+![Thumbnail.png](Thumbnail.png)
+
 Untuk projek mata kuliah Data Mining, kami ingin menemukan insights dari peristiwa COVID-19. Dalam hal ini, kami ingin melakukan tahapan seperti berikut:
 
 1. Eksplorasi Jumlah Kasus Dengan Kebijakan Pemerintah (Kasus DKI Jakarta)
