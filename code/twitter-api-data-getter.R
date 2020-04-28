@@ -15,9 +15,9 @@ twitter_token <- create_token(
 corona <- search_tweets("virus OR corona OR covid-19 OR covid19", n = 100000, lang = "id", retryonratelimit = TRUE, include_rts = FALSE)
 typeof(corona)
 
-df <- data.frame(corona$screen_name, corona$text, corona$retweet_count, corona$favorite_count)
+df <- data.frame(corona$created_at, corona$screen_name, corona$text, corona$retweet_count, corona$favorite_count, stringsAsFactors = F)
 
-colnames(corona)
-write.csv(df, file = "text.csv")
+colnames(df)
+write.csv(df, file = "full-text.csv")
 
 head(df)
