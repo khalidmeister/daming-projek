@@ -69,10 +69,7 @@ write.csv(cloud_data, 'not-big-data-dtm.csv')
 library(wordcloud)
 library(wordcloud2)
 set.seed(1234) # for reproducibility 
-wordcloud(words = df$word, freq = df$freq, min.freq = 1, 
+wordcloud(words = cloud_data$word, freq = cloud_data$freq, min.freq = 1, 
           max.words=200, random.order=FALSE, rot.per=0.35, colors=brewer.pal(8, "Dark2"))
-wordcloud2(data=df)
-
-df
 
 # Topic Modelling with LDA
