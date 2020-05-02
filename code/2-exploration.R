@@ -1,3 +1,4 @@
+# Import libraries
 library(dplyr)
 library(tidytext)
 library(wordcloud)
@@ -8,14 +9,14 @@ library(ggplot2)
 df <- read.csv('./data/dataset_fix.csv', stringsAsFactors = F)
 View(df)
 text <- df[, c(1,6)]
+
 # Create Word Frequencies
 word_frequencies <- text %>%
   unnest_tokens(input = pre_processed_text, output = unigram) %>%
   count(unigram)
 
-
-
 # EDA
+
 # 1-gram frequency
 one_gram_freq <- word_frequencies %>%
   arrange(desc(n)) %>%
